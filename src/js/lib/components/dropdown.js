@@ -10,4 +10,3 @@ $.prototype.dropdown = function() {
 };
 
 $('.dropdown-toggle').dropdown();
-$('.dropdown-toggle-2').dropdown();

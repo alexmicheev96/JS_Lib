@@ -22,7 +22,49 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.dropdown = function () {
 };
 
 (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle').dropdown();
-(0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle-2').dropdown();
+
+/***/ }),
+
+/***/ "./src/js/lib/components/modal.js":
+/*!****************************************!*\
+  !*** ./src/js/lib/components/modal.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function () {
+  for (let i = 0; i < this.length; i++) {
+    //* получаем содержимое атрибута, по которому мы будем вызывать наше модальное окно
+    const target = this[i].getAttribute('data-target');
+    (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(e => {
+      e.preventDefault(); //* получаем элемент со страницы с данным идентификатором #target
+
+      (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeIn(500);
+      document.body.style.overflow = 'hidden';
+    });
+  } //* получаем все элементы с данным атрибутом, это крестик и кнопка красная 
+
+
+  const closeElements = document.querySelectorAll('[data-close]');
+  closeElements.forEach(elem => {
+    (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(elem).click(() => {
+      (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal').fadeOut(500);
+      document.body.style.overflow = '';
+    });
+    (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal').click(e => {
+      if (e.target.classList.contains('modal')) {
+        (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal').fadeOut(500);
+        document.body.style.overflow = '';
+      }
+    });
+  });
+};
+
+(0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
+console.log((0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]'));
 
 /***/ }),
 
@@ -100,7 +142,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/actions */ "./src/js/lib/modules/actions.js");
 /* harmony import */ var _modules_effects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/effects */ "./src/js/lib/modules/effects.js");
 /* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
+/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
 //* файл экспортов для всего
+
 
 
 
@@ -622,16 +666,21 @@ __webpack_require__.r(__webpack_exports__);
   (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-500').fadeToggle(1000);
 });
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.wrap').innerHtml(`
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle-3" id="dropdownMenuButton-3">Dropdown button</button>
-        <div class="dropdown-menu" data-toggle-id ='dropdownMenuButton-3'>
-            <a href="#" class="dropdown-item">Action#1</a>
-            <a href="#" class="dropdown-item">Action#2</a>
-            <a href="#" class="dropdown-item">Action#3</a>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle-2" id="dropdownMenuButton-3">Dropdown button</button>
+            <div class="dropdown-menu" data-toggle-id ='dropdownMenuButton-3'>
+                <a href="#" class="dropdown-item">Action#1</a>
+                <a href="#" class="dropdown-item">Action#2</a>
+                <a href="#" class="dropdown-item">Action#3</a>
+            </div>
         </div>
-    </div>
     `);
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle-3').dropdown();
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle-2').dropdown(); // const btn = document.querySelector('[data-toggle="modal"]'),
+// modalWindow = document.querySelector(btn.getAttribute('data-target'));
+// btn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     modalWindow.style.display = 'block';
+// });
 })();
 
 /******/ })()
